@@ -1,13 +1,13 @@
 import java.util.Scanner;
 class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("Введите выражение:");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         System.out.println(calc(input));
     }
 
-    public static String calc(String input) {
+    public static String calc(String input) throws Exception {
         String errorMessage = "Выражение может состоять только из 2-x чисел от 1 до 10 включительно и символов: +, -, *, /. Формат: 1 + 1";
 
         if (new Validator().validate(input)) {
@@ -18,7 +18,7 @@ class Main {
             return new Calculator().calculator(num0, num1, symbol);
 
         } else {
-            throw new RuntimeException("Невалидное выражение. " + errorMessage);
+            throw new Exception("Невалидное выражение. " + errorMessage);
         }
     }
 }
